@@ -1,0 +1,23 @@
+{% extends "mysite/tech.html" %}
+
+
+
+
+<!--% url 'Politics:Politics_detail' pk=article.pk%-->
+
+{% block article_content %}
+    <h2 class="text-center">Tech Articles</h2>
+    <br>
+    {% for article in articles_list %}
+        <div class="container">
+            <h3 class="list_titles"><a href="{{ article.get_absolute_url }}">{{ article.title }}</a></h3>
+            <p class="date_published">Published by {{ article.author }} on {{ article.publish }}</p>
+            <div class="body-preview">
+            {{ article.body|truncatewords:15|linebreaks }}
+            </div>
+            <hr class="horizontal-line">
+        </div>
+    {% endfor %}
+
+    {% include "pagination.html" with page=page_obj%}      <!--articles_list   if it was a function view instead of class based views-->
+{% endblock %}

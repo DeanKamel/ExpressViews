@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>ExpressViews</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+
+
+
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'home/style.css' %}">
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'home/images/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'home/images/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'home/images/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'home/images/site.webmanifest' %}">
+</head>
+
+
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-inverse">    <!-- WATCH THE DJANGO NAVIGATION VIDEOS(CAN ALSO CHANGE THE NAVBAR IN CSS) -->
+        <div class="container-fluid">
+
+            <!-- Logo -->
+            <div class="navbar-header">
+                <a href="{% url 'home:index' %}" class="navbar-brand">ExpressViews</a>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menuItems">
+                    <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true" style="background: lightgray"></span>
+                </button>
+            </div>
+
+            <!-- Items -->
+            <div class="collapse navbar-collapse" id="menuItems">
+                <ul class="nav navbar-nav">
+                    <li><a href="{% url 'mysite:Politics_index' %}">Politics</a></li>
+                    <li><a href="{% url 'mysite:Sports_index' %}">Sports</a></li>
+                    <li><a href="{% url 'mysite:Tech_index' %}">Tech</a></li>
+                    <li><a href="{% url 'mysite:Travel_index' %}">Travel</a></li>
+                    <li><a href="{% url 'mysite:Food_index' %}">Food</a></li>
+                    <li><a href="{% url 'mysite:Music_index' %}">Music</a></li>
+                </ul>
+
+
+
+                <ul class="nav navbar-nav navbar-right">
+                    {% if user.is_authenticated %}
+                        <li><a>Welcome {{ user.get_username }}</a></li>
+                        <li><a href="{% url 'logout' %}">Logout</a></li>
+                    {% else %}
+                        <li><a href="{% url 'login' %}">Login</a></li>
+                        <li class="signup"><a href="{% url 'signup' %}">Signup</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+    <!-- Center Text Logo -->
+    <h1 class="center-text">ExpressViews</h1>
+    <!-- Create Account Button -->
+{#    <div class="bt1">#}
+{#        <button type="button" class="btn btn-primary btn-lg">Create Account</button>#}
+{#    </div>#}
+
+    <div class="bt1">
+        <button type="button" class="btn-grad"><a href="{% url 'signup' %}" class="link_btn">Create Account</a></button>
+    </div>
+
+
+
+
+
+
+    <div class="features-blue">
+        <div class="container">
+            <div class="intro">
+                <h2 class="text-center">Write Your Article in 3 Easy Steps</h2>
+            </div>
+            <div class="row features">
+                <div class="col-sm-6 col-md-4 item">
+                    <i class="glyphicon glyphicon-user"></i>
+                    <h3 class="name">Sign Up</h3>
+                    <p class="description">Register an account so you can write<br> and discuss articles with other.</p>
+                </div>
+                <div class="col-sm-6 col-md-4 item"><i class="glyphicon glyphicon-list-alt"></i>
+                    <h3 class="name">Choose Topic</h3>
+                    <p class="description">Select between 6 different topics to write about.</p>
+                </div>
+                <div class="col-sm-6 col-md-4 item"><i class="glyphicon glyphicon-pencil"></i>
+                    <h3 class="name">Start Writing!</h3>
+                    <p class="description">Post your article and express your views with others.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="footer-basic">
+        <footer>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="#">Home</a></li>
+                <li class="list-inline-item"><a href="#">Services</a></li>
+                <li class="list-inline-item"><a href="#">About</a></li>
+                <li class="list-inline-item"><a href="#">Terms</a></li>
+                <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+            </ul>
+            <p class="copyright">ExpressViews © 2021</p>
+        </footer>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

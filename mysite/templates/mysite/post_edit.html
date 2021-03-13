@@ -1,0 +1,91 @@
+{#{% extends 'mysite/mysite.html' %}#}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>ExpressViews</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'mysite/style.css' %}">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-inverse">    <!-- WATCH THE DJANGO NAVIGATION VIDEOS(CAN ALSO CHANGE THE NAVBAR IN CSS) -->
+        <div class="container-fluid">
+
+            <!-- Logo -->
+            <div class="navbar-header">
+                <a href="{% url 'home:index' %}" class="navbar-brand">ExpressViews</a>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menuItems">
+                    <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true" style="background: lightgray"></span>
+                </button>
+            </div>
+
+            <!-- Items -->
+            <div class="collapse navbar-collapse" id="menuItems">
+                <ul class="nav navbar-nav">
+                    <li><a href="{% url 'mysite:Politics_index' %}">Politics</a></li>
+                    <li><a href="{% url 'mysite:Sports_index' %}">Sports</a></li>
+                    <li><a href="{% url 'mysite:Tech_index' %}">Tech</a></li>
+                    <li><a href="{% url 'mysite:Travel_index' %}">Travel</a></li>
+                    <li><a href="{% url 'mysite:Food_index' %}">Food</a></li>
+                    <li><a href="{% url 'mysite:Music_index' %}">Music</a></li>
+
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    {% if user.is_authenticated %}
+                        <li><a href="{% url 'logout' %}">Logout</a></li>
+                    {% else %}
+                        <li><a href="{% url 'login' %}">Login</a></li>
+                        <li><a href="{% url 'signup' %}">Signup</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+<div class="wrapper1">
+    {% block article_content %}
+        {% if user.is_authenticated %}
+
+        <h2 class="New-Post">New Post</h2>
+
+        <div class="form-group">
+            <form method="post" class="post-form">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class="submit-button">
+                    <button type="submit" class="save btn btn-primary btn-md">Submit</button>
+                </div>
+            </form>
+        </div>
+
+
+        {% else %}
+            <div class="login_post">
+                <h3 class="login_to_post">Login to Post!!!</h3>
+            </div>
+        {% endif %}
+
+
+
+    {% endblock %}
+</div>
+
+</body>
+
+
+
+
