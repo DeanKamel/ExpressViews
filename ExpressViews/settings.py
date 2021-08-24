@@ -124,7 +124,7 @@ USE_TZ = True
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-STATIC_ROOT = ''
+STATIC_ROOT = os.path.join('home/', 'static')
 STATIC_URL = '/static/'
 
 
