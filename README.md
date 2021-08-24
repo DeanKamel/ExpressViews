@@ -9,7 +9,7 @@ A blog-like web application where users can write articles and anything they are
 - Search for articles
 - Like/Dislike articles
 - Comment on articles
-
+ 
 <br></br>
 ## What the app looks like
 ![alt text](https://github.com/DeanKamel/ExpressViews/blob/master/Pictures%20of%20the%20app/Webp.net-resizeimage%20(1).jpg)
